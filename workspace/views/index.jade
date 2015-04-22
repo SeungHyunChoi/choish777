@@ -1,0 +1,75 @@
+extends layout
+
+    
+block content
+    h1= title
+    h1 Nodejs (clould9) + MonggoDB ( <a href="https://mongolab.com/" target="_new">mongolab</a>)  
+    div plan :: paging , Bootstrap , AngularJS
+    br
+    br
+    // Wrapper
+    #wrapper
+
+        // USER INFO
+        #userInfo
+            h2 User Info
+            p
+                strong Name:
+                |  <span id='userInfoName'>#{userInfoName}</span>
+                br
+                strong Age:
+                |  <span id='userInfoAge'>#{userInfoAge}</span>
+                br
+                strong Gender:
+                |  <span id='userInfoGender'>#{userInfoGender}</span>
+                br
+                strong Location:
+                |  <span id='userInfoLocation'>#{userInfoLocation}</span>
+                br
+                strong Date:
+                |  <span id='userInfoDate'>#{userInfoDate}</span>                
+        // /USER INFO
+        // USER LIST
+        h2 User List
+        
+        #userList
+            table
+                thead
+                    th UserName
+                    th Email
+                    th Delete?
+                    th Date
+                tr
+                    each user, i in userlist
+                       td 
+                           a(href="#" , class="linkshowuser" ,rel="#{user._id}" )= user.username
+                       td 
+                           = user.email
+                       td 
+                           a(href="#" ,class="linkdeleteuser" , rel="#{user._id}")= user._id
+                       td 
+                           = user.regdt
+                               tr
+          
+            <div id="test" style="display:none">#{paging}</div>
+            <div id="pagingBst">
+        // /USER LIST
+        // ADD USER
+        h2 Add User
+        #addUser
+            fieldset
+                input#inputUserName(type='text', placeholder='Username') 
+                input#inputUserEmail(type='text', placeholder='Email')
+                br
+                input#inputUserFullname(type='text', placeholder='Full Name')
+                input#inputUserAge(type='text', placeholder='Age')
+                br
+                input#inputUserLocation(type='text', placeholder='Location')
+                input#inputUserGender(type='text', placeholder='gender')
+                br
+                button#btnAddUser Add User
+        // /ADD USER
+        //paging  
+    // /WRAPPER
+        
+    
